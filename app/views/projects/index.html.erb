@@ -8,19 +8,19 @@
   </thead>
 
   <tbody>
-          <h1 class="header">Current Projects</h1>
-            <% @projects.each do |project| %>    
-              <div class="list-body">
-                <h5 class="project-title"><%= project.title %></h5>
-                 <p class="project-description"><%= project.description %></p>
-                   <small class="project-url"><%= project.repo_url %></small>
-              </div>
-              <div class="list-footer">
-                <%= link_to 'Show', project %>
-                <%= link_to 'Edit', edit_project_path(project) %>
-                <%= link_to 'Destroy', project, method: :delete%>
-              </div>
-            <% end %>
+    <h1 class="header">Current Projects</h1>
+      <% @projects.each do |project| %>    
+        <div class="list-body">
+          <h5 class="project-title"><%= project.title %></h5>
+            <p class="project-description"><%= project.description %></p>
+              <small class="project-url"><%= project.repo_url %></small>
+        </div>
+        <div class="list-footer">
+          <%= link_to 'Show', project %>
+          <%= link_to 'Edit', edit_project_path(project) %>
+          <%= link_to 'Destroy', project, method: :delete%>
+        </div>
+      <% end %>
 </table>
 
 <br>
