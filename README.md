@@ -40,20 +40,20 @@ As a blank, I want to be able to blank, so that blank.
 
 ## Modeling our Data
 
-**Project**
-	has_many :notes
-  has_one :user
-  title:string
-  link:string
-  description:text
+**Project**  
+	- has_many :notes
+  - has_one :user
+  - title:string
+  - link:string
+  - description:text
 
 **Notes** 
-  belongs_to :Project
-  title:string
-  content:text
+  - belongs_to :Project
+  - title:string
+  - content:text
 
 **User**
-  has_many :projects
+  - has_many :projects
 
 ## Think through the pages we need in our app
 
