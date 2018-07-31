@@ -40,14 +40,14 @@ As a blank, I want to be able to blank, so that blank.
 
 ## Modeling our Data
 
-**Project**  
-	- has_many :notes
+**Project**
+  - has_many :notes
   - has_one :user
   - title:string
   - link:string
   - description:text
 
-**Notes** 
+**Notes**
   - belongs_to :Project
   - title:string
   - content:text
