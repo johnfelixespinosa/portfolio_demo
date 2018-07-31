@@ -1,0 +1,15 @@
+	<div class="col-1 about homepage_content">
+		<h2>About</h2>
+		<hr>
+    <p>I am just an aspiring developer, this application acts as my portfolio, and as a way for me to keep track of all my projects and their progress</p>
+	</div>
+
+	<div class="col-3 homepage_content">
+		<h2>Stuff I'm Building</h2>
+		<hr>
+		<% @projects.each do |project| %>
+			<h3><a href="#"><%= link_to project.title, project %></a></h3>
+			<p class="date"><%= project.created_at.strftime("%A, %b %d") %></p>
+		<% end %>
+	</div>
+</div>
