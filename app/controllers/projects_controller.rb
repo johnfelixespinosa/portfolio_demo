@@ -2,13 +2,11 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
-  # GET /projects.json
-  def index
-    @projects = Project.all
-  end
+	def index
+		@projects = Project.all.order("created_at desc")
+	end
 
   # GET /projects/1
-  # GET /projects/1.json
   def show
   end
 
@@ -22,23 +20,17 @@ class ProjectsController < ApplicationController
   end
 
   # POST /projects
-  # POST /projects.json
-  def create
-    @project = Project.new(project_params)
+	def create
+		@project = Project.new project_params
 
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.json { render :show, status: :created, location: @project }
-      else
-        format.html { render :new }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+		if @project.save
+			redirect_to @project, notice: "Project was successfully saved!"
+		else
+			render 'new'
+		end
+	end
 
   # PATCH/PUT /projects/1
-  # PATCH/PUT /projects/1.json
   def update
     respond_to do |format|
       if @project.update(project_params)
@@ -52,7 +44,6 @@ class ProjectsController < ApplicationController
   end
 
   # DELETE /projects/1
-  # DELETE /projects/1.json
   def destroy
     @project.destroy
     respond_to do |format|
@@ -64,11 +55,11 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id])
+      @project = Project.find_by_id(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.fetch(:project, {})
+      params.require(:project).permit(:title, :repo_url, :description)
     end
 end
